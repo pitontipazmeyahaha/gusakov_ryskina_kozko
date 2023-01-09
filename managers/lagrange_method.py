@@ -3,9 +3,9 @@ import math
 import matplotlib.pyplot as plt
 
 def f_x(t,x):
-    return math.exp(t)
+    return math.exp(t) * x
 def f_y(t,y):
-    return t
+    return t * y
 
 def create_material_body(x_c,y_c,h):
     t = 0
@@ -22,7 +22,7 @@ def create_material_body(x_c,y_c,h):
 
 def move_material_body(time,h,mb):
     point_trajectories = []
-    c2 = 2 / 3
+    c2 = 2/3
     c3 = 2/3
     a21 = 2/3
     a31 = -1/3
@@ -55,11 +55,10 @@ def move_material_body(time,h,mb):
 def plot_trajectory(mb, tr):
     for i in range(len(mb.material_points)):
         plt.plot(mb.material_points[i].coord_x, mb.material_points[i].coord_y, 'g')
-    for i in range(len(mb.material_points)):
-        plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[i].y, 'b',linewidth=0)
-    for i in range(len(mb.material_points)):
+        plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[i].y, 'b',linewidth=0.5)
         time = len(tr.point_trajectories[i].x) - 1
         plt.plot(tr.point_trajectories[i].x[time], tr.point_trajectories[i].y[time], 'r')
     plt.axis('equal')
     plt.grid()
     plt.show()
+    plt.savefig('траектория.png', format = 'png', dpi=1200)
