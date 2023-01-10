@@ -1,5 +1,5 @@
 class MaterialPoint:
-    def __init__(self,i,coord_x,coord_y,velocity_x,velocity_y,x_0,y_0,t):
+    def __init__(self, i, coord_x, coord_y, velocity_x, velocity_y, x_0, y_0, t):
         self.i=i
         self.coord_x = coord_x
         self.coord_y = coord_y
