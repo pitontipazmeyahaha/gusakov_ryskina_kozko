@@ -3,7 +3,7 @@ import math
 import matplotlib.pyplot as plt
 
 def f_x(t,x):
-    return math.exp(t) * x
+    return - math.exp(t) * x
 def f_y(t,y):
     return t * y
 
@@ -56,9 +56,11 @@ def plot_trajectory(mb, tr):
     for i in range(len(mb.material_points)):
         for j in range(len(mb.material_points)):
             plt.plot(mb.material_points[i].coord_x, mb.material_points[j].coord_y, 'r.')
-        plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[i].y, 'b', linewidth=0.5)
-        time = len(tr.point_trajectories[i].x) - 1
-        plt.plot(tr.point_trajectories[i].x[time], tr.point_trajectories[i].y[time], 'g.')
+    for i in range(len(mb.material_points)):
+        for j in range(len(mb.material_points)):
+            plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[j].y, 'b', linewidth=0.5)
+            time = len(tr.point_trajectories[i].x) - 1
+            plt.plot(tr.point_trajectories[i].x[time], tr.point_trajectories[j].y[time], 'g.')
     plt.axis('equal')
     plt.grid()
     plt.show()

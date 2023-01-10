@@ -3,7 +3,7 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 def f_x(t,x):
-    return math.exp(t) * x
+    return - math.exp(t) * x
 def f_y(t,y):
     return t * y
 def move_through_space(time, h, grid_axis):
@@ -21,7 +21,7 @@ def move_through_space(time, h, grid_axis):
                 y = y_s[i, j]
                 space_points.append(mod.SpacePoint(m, x, y, f_x(t, x), f_y(t, y), t))
                 m += 1
-        velocity_fields.append(mod.SpaceGrid(space_points))
+            velocity_fields.append(mod.SpaceGrid(space_points))
         t += h
         return velocity_fields
 def plot_velocity_fields(velocity_fields, grid_axis):
