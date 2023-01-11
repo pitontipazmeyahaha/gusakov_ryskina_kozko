@@ -3,7 +3,7 @@ import math
 import matplotlib.pyplot as plt
 
 def f_x(t,x):
-    return math.exp(t) * x
+    return - math.exp(t) * x
 def f_y(t,y):
     return t * y
 
@@ -15,10 +15,10 @@ def create_material_body(x_c,y_c,h):
         for j in range(int(2/h)+1):
             x = x_c + j*h
             y = y_c + i*h
-            material_points.append(mod.MaterialPoint(m,x,y,f_x(t,x),f_y(t,y),x,y,t))
+            material_points.append(mod.MaterialPoint(m, x, y, f_x(t, x), f_y(t, y), x, y, t))
             m += 1
-        material_body = mod.MaterialBody(material_points)
-        return material_body
+    material_body = mod.MaterialBody(material_points)
+    return material_body
 
 def move_material_body(time,h,mb):
     point_trajectories = []
@@ -54,10 +54,13 @@ def move_material_body(time,h,mb):
 
 def plot_trajectory(mb, tr):
     for i in range(len(mb.material_points)):
-        plt.plot(mb.material_points[i].coord_x, mb.material_points[i].coord_y, 'g')
-        plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[i].y, 'b',linewidth=0.5)
-        time = len(tr.point_trajectories[i].x) - 1
-        plt.plot(tr.point_trajectories[i].x[time], tr.point_trajectories[i].y[time], 'r')
+        for j in range(len(mb.material_points)):
+            plt.plot(mb.material_points[i].coord_x, mb.material_points[j].coord_y, 'r.')
+    for i in range(len(mb.material_points)):
+        for j in range(len(mb.material_points)):
+            plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[j].y, 'b', linewidth=0.5)
+            time = len(tr.point_trajectories[i].x) - 1
+            plt.plot(tr.point_trajectories[i].x[time], tr.point_trajectories[j].y[time], 'g.')
     plt.axis('equal')
     plt.grid()
     plt.show()
