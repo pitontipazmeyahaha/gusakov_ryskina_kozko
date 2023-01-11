@@ -46,14 +46,14 @@ def plot_velocity_fields(velocity_fields, grid_axis):
         plt.subplot(1, 2, 1)
         plt.quiver(coord_x, coord_y, v_x, v_y)
 
-        for p in range(1, 5):
-            for q in range(1, 5):
-                x = np.linspace(0.1, 5.0, 100)
+        for p in range(1, 10):
+            for q in range(1, 10):
+                x = np.linspace(0.1, 10.0, 100)
                 d = f_y(t, 1) / f_x(t, 1)
                 c = q * (p ** d)
-                y = c * (-x ** d)
+                y = -c * (-x ** d)
                 plt.subplot(1, 2, 2)
-                plt.axis([-1, 5, -5, 1])
+                plt.axis([-1, 10, -10, 10])
                 plt.plot(x, y)
         t += h
         plt.show()

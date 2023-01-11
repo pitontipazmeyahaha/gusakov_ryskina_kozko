@@ -9,13 +9,13 @@ def f_y(t,y):
 def move_through_space(time, h):
     t = h
     m = 0
-    a = np.linspace(-4, 4, 9)
+    a = np.linspace(-4, 4, 9
     x_s, y_s = np.meshgrid(a, a)
     velocity_fields = []
     for n in range(int(time / h)):
         space_points = []
         for i in range(9):
-            for j in range(9):
+            for j in range(9:
                 x = x_s[i, j]
                 y = y_s[i, j]
                 space_points.append(mod.SpacePoint(m, x, y, f_x(t,x), f_y(t,y), t))
