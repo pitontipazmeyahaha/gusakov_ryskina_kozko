@@ -46,18 +46,14 @@ def plot_velocity_fields(velocity_fields, grid_axis):
         plt.subplot(1, 2, 1)
         plt.quiver(coord_x, coord_y, v_x, v_y)
 
-        for i in range(0, 20):
-            x1 = np.linspace(-grid_axis, -0.1, 100)
-            x2 = np.linspace(0.1, grid_axis, 100)
-            power = f_y(t, 1) / f_x(t, 1)
-            diff_const = -i
-            y1 = diff_const * pow(-x1, power)
-            y2 = diff_const * pow(x2, power)
-
-            plt.subplot(1, 2, 2)
-            plt.axis([-grid_axis, grid_axis, -grid_axis, grid_axis])
-            plt.plot(x1, y1)
-            plt.plot(x2, y2)
+        for p in range(1, 5):
+            for q in range(1, 5):
+                x = np.linspace(0.1, 5.0, 100)
+                d = f_y(t, 1) / f_x(t, 1)
+                c = q * (p ** d)
+                y = c * (-x ** d)
+                plt.subplot(1, 2, 2)
+                plt.axis([-1, 5, -5, 1])
+                plt.plot(x, y)
         t += h
         plt.show()
-        plt.savefig('поле_скоростей' + str(n) + '.png', format='png', dpi=1200)
