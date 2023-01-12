@@ -50,13 +50,14 @@ def plot_velocity_fields(velocity_fields, grid_axis):
                      -10:10:0.02]
         U = - math.exp(t) * X
         V = t * Y
+        C = np.sqrt((V**2)+U**2)
         plt.subplot(1, 2, 2)
         plt.axis([-grid_axis, grid_axis, -grid_axis, grid_axis])
         plt.streamplot(X, Y, U, V,
                        density = 4,
                        arrowsize = 1+0.2,
                        linewidth =  1,
-                       color = U,
+                       color = C,
                        cmap ='winter')
         t += h
         plt.show()
