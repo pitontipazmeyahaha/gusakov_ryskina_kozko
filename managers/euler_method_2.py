@@ -46,14 +46,17 @@ def plot_velocity_fields(velocity_fields, grid_axis):
         plt.subplot(1, 2, 1)
         plt.quiver(coord_x, coord_y, v_x, v_y)
 
-        for p in range(1, 10):
-            for q in range(1, 10):
-                x = np.linspace(0.1, 10.0, 100)
-                d = f_y(t, 1) / f_x(t, 1)
-                c = q * (p ** d)
-                y = -c * (-x ** d)
-                plt.subplot(1, 2, 2)
-                plt.axis([-1, 10, -10, 10])
-                plt.plot(x, y)
+        Y, X = np.mgrid[-10:10:0.02,
+                     -10:10:0.02]
+        U = - math.exp(t) * X
+        V = t * Y
+        plt.subplot(1, 2, 2)
+        plt.axis([-grid_axis, grid_axis, -grid_axis, grid_axis])
+        plt.streamplot(X, Y, U, V,
+                       density = 4,
+                       arrowsize = 1+0.2,
+                       linewidth =  1,
+                       color = U,
+                       cmap ='winter')
         t += h
         plt.show()

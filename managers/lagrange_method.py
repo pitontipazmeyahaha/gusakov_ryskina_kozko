@@ -58,10 +58,9 @@ def plot_trajectory(mb, tr):
             plt.plot(mb.material_points[i].coord_x, mb.material_points[j].coord_y, 'r.')
     for i in range(len(mb.material_points)):
         for j in range(len(mb.material_points)):
-            plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[j].y, 'k', alpha=0.1, linewidth=0.2)
+            plt.plot(tr.point_trajectories[i].x, tr.point_trajectories[j].y, ':', linewidth=0.2)
             time = len(tr.point_trajectories[i].x) - 1
             plt.plot(tr.point_trajectories[i].x[time], tr.point_trajectories[j].y[time], 'g.')
-    plt.legend()
     plt.axis('equal')
     plt.grid()
     plt.show()
