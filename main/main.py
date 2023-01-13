@@ -12,4 +12,4 @@ grid_axis = 8
 #lagr.plot_trajectory(body, trajectory)
 
 velocity_fields = euler.move_through_space(time, h, grid_axis)
-euler.plot_velocity_fields(velocity_fields, grid_axis)
+euler.plot_velocity_fields(velocity_fields, grid_axis,h)

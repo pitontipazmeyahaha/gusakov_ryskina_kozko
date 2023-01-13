@@ -24,8 +24,7 @@ def move_through_space(time, h, grid_axis):
             velocity_fields.append(mod.SpaceGrid(space_points))
         t += h
         return velocity_fields
-def plot_velocity_fields(velocity_fields, grid_axis):
-    h = velocity_fields[0].space_points[0].t
+def plot_velocity_fields(velocity_fields, grid_axis,h):
     t = h
     grid_length = grid_axis * 2 + 1
     for n in range(len(velocity_fields)):
